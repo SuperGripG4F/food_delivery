@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/home/food_page_body.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/widgets/big_text.dart';
+import 'package:food_delivery/widgets/small_text.dart';
 
 class MainFoodPage extends StatelessWidget {
   const MainFoodPage({super.key});
@@ -24,9 +26,19 @@ class MainFoodPage extends StatelessWidget {
                       BigText(
                         text: "Bangladesh",
                         color: AppColors.mainColor,
-                        size: 30,
+                        size: 20,
                       ),
-                      Text("City"),
+                      Row(
+                        children: [
+                          SmallText(
+                            text: "Narshingdi",
+                            color: Colors.black54,
+                          ),
+                          Icon(Icons.arrow_drop_down_rounded)
+                        ],
+                      )
+
+                      //Text("City"),
                     ],
                   ),
                   Center(
@@ -45,7 +57,8 @@ class MainFoodPage extends StatelessWidget {
                 ],
               ),
             ),
-          )
+          ),
+          FoodPageBody(),
         ],
       ),
     );
