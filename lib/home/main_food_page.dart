@@ -9,9 +9,12 @@ class MainFoodPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("current height is " + MediaQuery.of(context).size.height.toString());
+    print("current width is " + MediaQuery.of(context).size.width.toString());
     return Scaffold(
       body: Column(
         children: [
+          //showing the header
           Container(
             child: Container(
               margin: EdgeInsets.only(top: 45, bottom: 15),
@@ -21,12 +24,9 @@ class MainFoodPage extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      //Text("Country"),
-                      //
                       BigText(
                         text: "Bangladesh",
                         color: AppColors.mainColor,
-                        size: 20,
                       ),
                       Row(
                         children: [
@@ -58,6 +58,7 @@ class MainFoodPage extends StatelessWidget {
               ),
             ),
           ),
+          //showing the body
           FoodPageBody(),
         ],
       ),
