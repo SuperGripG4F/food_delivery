@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/home/food_page_body.dart';
 import 'package:food_delivery/utils/colors.dart';
+import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 
@@ -43,11 +44,12 @@ class MainFoodPage extends StatelessWidget {
                   ),
                   Center(
                     child: Container(
-                      width: 45,
-                      height: 45,
+                      width: Dimensions.widhth45,
+                      height: Dimensions.height45,
                       child: Icon(
                         Icons.search,
                         color: Colors.white,
+                        size: Dimensions.size24,
                       ),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
@@ -59,7 +61,10 @@ class MainFoodPage extends StatelessWidget {
             ),
           ),
           //showing the body
-          FoodPageBody(),
+          Expanded(
+              child: SingleChildScrollView(
+            child: FoodPageBody(),
+          )),
         ],
       ),
     );
