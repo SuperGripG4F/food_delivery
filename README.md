@@ -18,3 +18,9 @@ samples, guidance on mobile development, and a full API reference.
 ## Learn
 
 - Expaned widget  = focus the widget to get all available space
+
+- initalize later, so no need to set = now, but have to init it before use it;
+  late String firstHalf;
+  late String secondHalf;
+
+- while want to build a scroll view , it need a Expanded and SingleChildScrollview together ! 
