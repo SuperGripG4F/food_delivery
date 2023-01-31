@@ -86,3 +86,96 @@ Dhanka
 ```
 
 - use json to Dart <https://javiercbk.github.io/json_to_dart/>
+
+- Getter
+
+```
+
+  //gettet
+  List<ProductModel> get products => _products;
+
+```
+
+- product model
+
+```
+{
+    "total_size": 6,
+    "type_id": 2,
+    "offset": 0,
+    "products": [
+        {
+            "id": 1,
+            "name": "Nutritious fruit meal in china",
+            "description": "This five red bases, two are dedicated to salami (fennel and regular),",
+            "price": 12,
+            "stars": 5,
+            "location": "China",
+            "img": "images/food1.png",
+            "created_at": "2021-11-17 10:09:08",
+            "updated_at": "2022-01-01 08:27:22",
+            "type_id": 2
+        },
+        {
+            "id": 2,
+            "name": "Nutritious fruit meal in china 2",
+            "description": "This five red bases 2, two are dedicated to salami (fennel and regular),",
+            "price": 12,
+            "stars": 5,
+            "location": "China",
+            "img": "images/food1.png",
+            "created_at": "2021-11-17 10:09:08",
+            "updated_at": "2022-01-01 08:27:22",
+            "type_id": 2
+        },
+        {
+            "id": 3,
+            "name": "Nutritious fruit meal in china 3",
+            "description": "This five red bases 3, two are dedicated to salami (fennel and regular),",
+            "price": 12,
+            "stars": 5,
+            "location": "China",
+            "img": "images/food1.png",
+            "created_at": "2021-11-17 10:09:08",
+            "updated_at": "2022-01-01 08:27:22",
+            "type_id": 2
+        },
+        {
+            "id": 4,
+            "name": "Nutritious fruit meal in china 4",
+            "description": "This five red bases 4, two are dedicated to salami (fennel and regular),",
+            "price": 12,
+            "stars": 5,
+            "location": "China",
+            "img": "images/food1.png",
+            "created_at": "2021-11-17 10:09:08",
+            "updated_at": "2022-01-01 08:27:22",
+            "type_id": 2
+        },
+        {
+            "id": 5,
+            "name": "Nutritious fruit meal in china 5",
+            "description": "This five red bases 5, two are dedicated to salami (fennel and regular),",
+            "price": 12,
+            "stars": 5,
+            "location": "China",
+            "img": "images/food1.png",
+            "created_at": "2021-11-17 10:09:08",
+            "updated_at": "2022-01-01 08:27:22",
+            "type_id": 2
+        },
+        {
+            "id": 6,
+            "name": "Nutritious fruit meal in china 6",
+            "description": "This five red bases 6, two are dedicated to salami (fennel and regular),",
+            "price": 12,
+            "stars": 5,
+            "location": "China",
+            "img": "images/food1.png",
+            "created_at": "2021-11-17 10:09:08",
+            "updated_at": "2022-01-01 08:27:22",
+            "type_id": 2
+        }
+    ]
+}
+```
