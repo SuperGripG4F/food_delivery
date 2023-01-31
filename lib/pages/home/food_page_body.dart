@@ -4,11 +4,14 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:food_delivery/data/controllers/popular_product_controller.dart';
+import 'package:food_delivery/data/model/products_model.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/icon_and_text_widget.dart';
 import 'package:food_delivery/widgets/small_text.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({super.key});
@@ -45,29 +48,62 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     return Column(
       children: [
         //slider section
-        Container(
-          //color: Colors.redAccent,
-          height: Dimensions.pageView,
-          child: PageView.builder(
-              controller: pageController,
-              itemCount: 5,
-              //position is 0 - 5 total 5 items
-              itemBuilder: (context, position) {
-                return _buildPageItem(position);
-              }),
-        ),
+        // Container(
+        //   //color: Colors.redAccent,
+        //   height: Dimensions.pageView,
+        //   child: PageView.builder(
+        //       controller: pageController,
+        //       itemCount: 5,
+        //       //position is 0 - 5 total 5 items
+        //       itemBuilder: (context, position) {
+        //         return _buildPageItem(position);
+        //       }),
+        // ),
+
+        //if any data updated , we will know in this builder.
+        //popularProducts is the instance of controller
+        GetBuilder<PopularProductController>(builder: (popularProducts) {
+          return Container(
+            //color: Colors.redAccent,
+            height: Dimensions.pageView,
+            child: PageView.builder(
+                controller: pageController,
+                itemCount: popularProducts.popularProductList.length,
+                //position is 0 - 5 total 5 items
+                itemBuilder: (context, position) {
+                  return _buildPageItem(
+                      position, popularProducts.popularProductList[position]);
+                }),
+          );
+        }),
         //dots
-        DotsIndicator(
-          dotsCount: 5,
-          position: _currPageValue,
-          decorator: DotsDecorator(
-            activeColor: AppColors.mainColor,
-            size: const Size.square(9.0),
-            activeSize: const Size(18.0, 9.0),
-            activeShape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0)),
-          ),
-        ),
+        // DotsIndicator(
+        //   dotsCount: 5,
+        //   position: _currPageValue,
+        //   decorator: DotsDecorator(
+        //     activeColor: AppColors.mainColor,
+        //     size: const Size.square(9.0),
+        //     activeSize: const Size(18.0, 9.0),
+        //     activeShape: RoundedRectangleBorder(
+        //         borderRadius: BorderRadius.circular(5.0)),
+        //   ),
+        // ),
+        GetBuilder<PopularProductController>(builder: (popularProducts) {
+          return DotsIndicator(
+            //solve the problems that, the dots length is 0 , when in first init.
+            dotsCount: popularProducts.popularProductList.length <= 0
+                ? 1
+                : popularProducts.popularProductList.length,
+            position: _currPageValue,
+            decorator: DotsDecorator(
+              activeColor: AppColors.mainColor,
+              size: const Size.square(9.0),
+              activeSize: const Size(18.0, 9.0),
+              activeShape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
+            ),
+          );
+        }),
         //Popular section
         SizedBox(
           height: Dimensions.height30,
@@ -176,7 +212,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     );
   }
 
-  Widget _buildPageItem(int index) {
+  Widget _buildPageItem(int index, ProductModel popularProduct) {
     //Transform anime
     Matrix4 matrix = Matrix4.identity();
     //check index
@@ -209,6 +245,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       transform: matrix,
       child: Stack(
         children: [
+          //image
           Container(
             height: Dimensions.pageViewContainer,
             margin: EdgeInsets.only(left: 5, right: 5),
@@ -216,9 +253,12 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 borderRadius: BorderRadius.circular(30),
                 color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
                 image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage("assets/image/food1.png"))),
+                  fit: BoxFit.cover,
+                  //image: AssetImage("assets/image/food1.png"),
+                  image: NetworkImage(popularProduct.img!),
+                )),
           ),
+          //info
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
@@ -227,7 +267,6 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.white,
-                  // ignore: prefer_const_literals_to_create_immutables
                   boxShadow: [
                     BoxShadow(
                       color: Color(0xFFe8e8e8),

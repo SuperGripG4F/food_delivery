@@ -29,9 +29,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      //home: const MainFoodPage(),
+      home: const MainFoodPage(),
       //home: const PopularFoodDetail(),
-      home: const RecommendedFoodDetail(),
+      //home: const RecommendedFoodDetail(),
     );
   }
 }
