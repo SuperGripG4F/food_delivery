@@ -179,3 +179,5 @@ Dhanka
     ]
 }
 ```
+
+- put a var in string, use $
