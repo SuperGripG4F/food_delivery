@@ -26,6 +26,8 @@ samples, guidance on mobile development, and a full API reference.
 - while want to build a scroll view , it need a Expanded and SingleChildScrollview together !
 - Nested Json
 
+- How to build a model
+
 ```
 void main() {
   var myMap={
@@ -82,3 +84,5 @@ class Address{
 Output:
 Dhanka
 ```
+
+- use json to Dart <https://javiercbk.github.io/json_to_dart/>
