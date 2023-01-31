@@ -3,8 +3,13 @@ import 'package:food_delivery/pages/food/popular_food_detail.dart';
 import 'package:food_delivery/pages/food/recommended_food_detail.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:get/get.dart';
+import 'helper/dependencies.dart' as dep;
 
-void main() {
+Future<void> main() async {
+  //make sure that the dependencies are loaded correctly and wait until they are loaded.
+  WidgetsFlutterBinding.ensureInitialized();
+  //before run app, try to load the dependencies first!
+  await dep.init();
   runApp(const MyApp());
 }
 

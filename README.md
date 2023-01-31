@@ -23,4 +23,62 @@ samples, guidance on mobile development, and a full API reference.
   late String firstHalf;
   late String secondHalf;
 
-- while want to build a scroll view , it need a Expanded and SingleChildScrollview together ! 
+- while want to build a scroll view , it need a Expanded and SingleChildScrollview together !
+- Nested Json
+
+```
+void main() {
+  var myMap={
+    "name":"Henry",
+    "age":23,
+    "city":"Hong Kong",
+    'address':[{
+      "country":"china",
+      "city":"Hong Kong"
+    },{
+      "country":"Bangladesh",
+      "city":"Dhanka"
+    }
+              ]};
+  
+  var obj = Person.fromJson(myMap);
+  print (obj.address![1].city);
+  
+}
+class Person{
+  String? name;
+  int? age;
+  String? city;
+  List<Address>? address;
+  Person({this.name,this.age,this.city});
+  
+  Person.fromJson(Map<String,dynamic> json){
+    name = json['name'];
+    age = json['age'];
+    city = json['city'];
+    if(json['address']!= null){
+      address = <Address>[];
+      for(var a in json['address'] as List){
+        address!.add(Address.fromJson(a));
+      } 
+    }
+  }
+}
+
+class Address{
+  String? country;
+  String? city;
+  Address({this.country,this.city});
+  
+  Address.fromJson(Map<String,dynamic> json){
+    country = json['country'];
+    city = json['city'];
+
+  }
+}
+```
+
+```
+Output:
+Dhanka
+```
