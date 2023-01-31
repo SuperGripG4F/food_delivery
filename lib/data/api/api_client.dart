@@ -1,3 +1,4 @@
+import 'package:food_delivery/utils/app_constants.dart';
 import 'package:get/get_connect.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -12,6 +13,7 @@ class ApiClient extends GetConnect implements GetxService {
   ApiClient({required this.appBaseUrl}) {
     baseUrl = appBaseUrl;
     //trying lifetime
+    token = AppConstants.TOKEN;
     timeout = Duration(seconds: 30);
     _mainHeaders = {
       'Content-type': 'application/json; charset=UTF-8',
@@ -21,6 +23,7 @@ class ApiClient extends GetConnect implements GetxService {
   }
 
   Future<Response> getData(String uri) async {
+    //uri only need endpoint
     try {
       Response response = await get(uri);
       return response;
